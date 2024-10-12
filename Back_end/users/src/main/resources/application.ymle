@@ -1,0 +1,45 @@
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:8761/eureka
+
+server:
+  port: 8090
+
+spring:
+#  config:
+#    import: optional:configserver:http://localhost:8888
+  cloud:
+    config:
+      enabled: false
+  application:
+    name: users
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/users
+    username: postgres
+    password: postgres
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+application:
+  config:
+    products-url: http://localhost:8070/api/v1/products
+    categories-url: http://localhost:8070/api/v1/categories
+  security:
+    jwt:
+      secret-key: c32bca992ea32b223cd8f1e91daf4520920edc4b59fa9bd1c812b526e9958aec
+      expiration: 86400000 # a day
+      refresh-token:
+        expiration: 604800000 # 7 days
+
+logging:
+  level:
+    org.springframework.security: DEBUG

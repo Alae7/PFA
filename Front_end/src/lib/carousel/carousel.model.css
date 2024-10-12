@@ -1,0 +1,58 @@
+.carousel-container {
+    width: 100%;
+    background-color: black;
+    position: relative;
+}
+
+.card-container {
+    display: flex;
+    height: 500px; /* Ensures uniform height */
+    width: 100%;
+}
+
+.card-left {
+    width: 50%;
+    display: flex;
+    justify-content: left; /* Center text vertically */
+    align-items: center; /* Center text horizontally */
+}
+
+.card-right {
+    width: 50%;
+    display: flex;
+    justify-content: flex-end; /* Align the image to the far right */
+    align-items: center; /* Center image vertically */
+    overflow: hidden; /* Prevent overflow of the image */
+}
+
+.card-right img {
+    height: 100%; /* Ensures the image takes full height */
+    width: 1000px; /* Maintain aspect ratio */
+    max-width: none; /* Allow image to grow beyond 100% width */
+    object-fit: cover; /* Ensure the image covers the container */
+}
+
+@media only screen and (max-width: 800px) {
+    .card-container {
+        flex-direction: column; /* Stack content vertically on smaller screens */
+        height: auto; /* Allow height to adjust */
+    }
+
+    .card-left, .card-right {
+        width: 100%; /* Full width for both sections */
+        height: 300px; /* Adjust height for smaller screens */
+    }
+
+    .card-right img {
+        height: 100%; /* Adjust image height for responsiveness */
+        width: auto; /* Maintain aspect ratio */
+    }
+}
+
+.fron-text-gradient {
+    background: #076585;
+    background: -webkit-linear-gradient(to right, #076585, #fff);
+    background: linear-gradient(to right, #076585, #fff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
